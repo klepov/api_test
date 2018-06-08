@@ -16,11 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from api.views import EmployeeApi, EmployeeCreateApi, EmployeeListApi, EmployeeWorkflow
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('<int:pk>/', EmployeeApi.as_view()),
+    path('create/', EmployeeCreateApi.as_view()),
+    path('', EmployeeListApi.as_view()),
+
+    # path('list/', EmployeeListApi.as_view()),
 ]
 
-# /workflow/
 # /migrate/
 # /list/
 # /list?name=blahbla&phone=5486
