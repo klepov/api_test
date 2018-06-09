@@ -1,0 +1,5 @@
+uwsgi
+django-phonenumber-field
+Django
+djangorestframework
+psycopg2
