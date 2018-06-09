@@ -18,11 +18,16 @@ from django.urls import path, include
 
 from django.conf.urls.static import static
 
-from server.api_test import settings
+from api_test import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('employee/', include('api.urls'))
 ]
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+"""
+bash -c 'python3 manage.py migrate && python3 manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser("'"admin"'", "'"admin@example.com"'", "'"adminpass"'")"  && uwsgi --emperor uwsgi.ini'
+"""

@@ -6,8 +6,10 @@ services:
       container_name: postgres_test
       image: postgres
       environment:
-        POSTGRES_USER: user_test
-        POSTGRES_PASSWORD: passw
+        POSTGRES_USER: testing
+        POSTGRES_PASSWORD: test_pass
+        POSTGRES_DB: test
+
       ports:
         - "5432:5432"
       volumes:
@@ -22,6 +24,7 @@ services:
           - "443:443"
         volumes:
         - ./log:/var/log/nginx
+        - /static:/static
         volumes_from:
         - api
         depends_on:
@@ -31,13 +34,13 @@ services:
         container_name: container_api_test
         build: ./server
         restart: always
-        command: uwsgi --emperor uwsgi.ini
+        command: bash -c 'python3 manage.py migrate && python3 manage.py collectstatic --noinput && uwsgi --emperor uwsgi.ini'
         volumes:
-        - /uwsgi
+        - /static:/docker_api/static
         - /tmp
         depends_on:
         - db
-
+#&& python3 manage.py shell -c '"'from django.contrib.auth.models import User; User.objects.create_superuser("'"admin"'", "'"admin@example.com"'", "'"adminpass"'")'"'
 
 volumes:
     api_data:

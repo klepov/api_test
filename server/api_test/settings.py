@@ -47,7 +47,6 @@ REST_FRAMEWORK = {
     ),
 }
 
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -84,13 +83,24 @@ WSGI_APPLICATION = 'api_test.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'user_test',
-        'USER': 'user_test',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'test',
+        'USER': 'testing',
+        'PASSWORD': 'test_pass',
         'HOST': 'db',
-        'PORT': 5432,
+        'PORT': '5432',
+
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -130,3 +140,7 @@ MEDIA_URL = '/media/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 MEDIA_ROOT = os.path.join(BASE_DIR, )
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+# ]
