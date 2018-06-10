@@ -25,16 +25,17 @@ class TestEmployeeModel(TestCase):
                                                                     password='test').pk
                                     },
                                     format='json')
-
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(response.json(),
+        response = response.json()
+        response.pop('id')
+        self.assertEqual(response,
                          {'bdate': '1990-01-01',
                           'phone_number': '+79030008888',
                           'name': 'ivan',
                           'position_departament': None,
                           'sex': 1,
                           'workflow_type': 0,
-                          'id': 1}
+                          }
                          )
 
     def test_change_employee(self):
@@ -155,10 +156,12 @@ class TestEmployeeModel(TestCase):
         emp = self._create_emp()
         response = self.client.get('/employee/%s/' % emp.id)
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {
+        response = response.json()
+        response.pop('id')
+        self.assertEqual(response, {
             'sex': 1,
             'bdate': '1990-01-01',
-            'name': 'ivan', 'id': 1,
+            'name': 'ivan',
             'phone_number': '+79030008888',
             'workflow_type': 0,
             'position_departament': None}
@@ -182,17 +185,8 @@ class TestEmployeeModel(TestCase):
         response = self.client.get('/employee/?name=вася&departament=разработка&position=стажер')
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(),
-                         [{
-                             "id": 101,
-                             "name": "вася",
-                             "sex": 1,
-                             "bdate": '1990-01-01',
-                             "phone_number": '+79030008888',
-                             'workflow_type': 0,
-                             "position_departament":{'id': 1, 'departament': {'id': 1, 'title': 'разработка'}, 'title': 'стажер'}
-                         }]
-                         )
+        self.assertEqual(len(response.json()), 1)
+        self.assertEqual(response.json()[0].get('name'), 'вася')
 
     @staticmethod
     def _create_emp(name='ivan'):

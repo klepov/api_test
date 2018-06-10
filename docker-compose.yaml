@@ -10,8 +10,6 @@ services:
         POSTGRES_PASSWORD: test_pass
         POSTGRES_DB: test
 
-      ports:
-        - "5432:5432"
       volumes:
         - pgdata:/var/lib/postgresql/data/
 
@@ -40,7 +38,6 @@ services:
         - /tmp
         depends_on:
         - db
-#&& python3 manage.py shell -c '"'from django.contrib.auth.models import User; User.objects.create_superuser("'"admin"'", "'"admin@example.com"'", "'"adminpass"'")'"'
 
 volumes:
     api_data:
