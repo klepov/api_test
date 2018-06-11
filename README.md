@@ -18,3 +18,10 @@
 ```
 - echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'adminpass')" | python manage.py shell
 ```
+
+### Шаг третий (добавить hr)
+- войти 0.0.0.0:80/admin
+- создать группу "hr" - 0.0.0.0/admin/auth/group/add/
+- создать пользователя 0.0.0.0/admin/api/employee/add/
+- прилинковать токен к пользователю - 0.0.0.0/admin/authtoken/token/add/
+
