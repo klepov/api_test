@@ -21,8 +21,8 @@ class TestEmployeeModel(TestCase):
                                         "sex": 1,
                                         "phone_number": "+79030008888",
                                         "bdate": "1990-01-01",
-                                        "user": User.objects.create(username='ivan',
-                                                                    password='test').pk
+                                        "username": 'ivan',
+                                        "password": 'test'
                                     },
                                     format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -123,8 +123,8 @@ class TestEmployeeModel(TestCase):
                                      data={
                                          "position_departament":
                                              PositionDepartament.objects.create(title="синьор",
-                                                 departament=Departament.objects.create(
-                                                     title="помидор")).id,
+                                                                                departament=Departament.objects.create(
+                                                                                    title="помидор")).id,
                                      },
                                      format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -146,8 +146,8 @@ class TestEmployeeModel(TestCase):
                                      data={
                                          "position_departament":
                                              PositionDepartament.objects.create(title="синьор",
-                                                 departament=Departament.objects.create(
-                                                     title="помидор")).id,
+                                                                                departament=Departament.objects.create(
+                                                                                    title="помидор")).id,
                                      },
                                      format='json')
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)

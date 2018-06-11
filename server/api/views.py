@@ -5,6 +5,8 @@ from api.models import Employee, Departament
 from api.serializers import EmployeeSerializers
 from common.common_exceptions import OnlyHr
 
+from api.serializers import EmployeeCreateSerializers
+
 
 class IsOwnerOrHROnly(permissions.BasePermission):
 
@@ -32,7 +34,7 @@ class EmployeeWorkflow(UpdateAPIView):
 
 
 class EmployeeCreateApi(CreateAPIView):
-    serializer_class = EmployeeSerializers
+    serializer_class = EmployeeCreateSerializers
     queryset = Employee.objects.all()
 
     permission_classes = ()
