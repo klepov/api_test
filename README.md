@@ -10,13 +10,13 @@
 ### Шаг второй
 Выполнить
 ```
-- docker-compose up -d
+docker-compose up -d
 ```
 ```
-- docker exec -it container_api_test bash
+docker exec -it container_api_test bash
 ```
 ```
-- echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'adminpass')" | python manage.py shell
+echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'adminpass')" | python manage.py shell
 ```
 
 ### Шаг третий (добавить hr)
