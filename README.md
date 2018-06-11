@@ -25,6 +25,7 @@ echo "from django.contrib.auth.models import User; User.objects.create_superuser
 - прилинковать токен к пользователю - 0.0.0.0/admin/authtoken/token/add/
 - создать группу "hr" - 0.0.0.0/admin/auth/group/add/
 - прилинковать созданного пользователя к группе "hr"
+- создать департаменты и позиции в админке
 
 ## Документация
 
