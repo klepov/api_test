@@ -54,8 +54,8 @@ response 200
 ```
 
 ### изменить сотрудника
-PATCH /employee/<id>/
-HEADER Authorization: Token	<token>
+- PATCH /employee/<id>/
+- HEADER Authorization: Token	<token>
 ```
 {
   "name": "ivan",
@@ -78,8 +78,8 @@ response 200
 
 
 ### уволить/принять сотрудника
-PATCH /employee/<id>/
-HEADER Authorization: Token	<token>
+- PATCH /employee/<id>/
+- HEADER Authorization: Token	<token>
 ```
 {
 	"workflow_type": "1",
@@ -105,8 +105,8 @@ response 200
 
 
 ### перевести в другой отдел
-PATCH /employee/<id>/
-HEADER Authorization: Token	<token>
+- PATCH /employee/<id>/
+- HEADER Authorization: Token	<token>
 ```
 {
 	"position_departament": "1",
